@@ -563,8 +563,8 @@ of the columns of `A`.
 would create an array of `Int`, initialized to zero, matching the
 indices of `A`.
 """
-similar(f, shape::Tuple) = f(to_shape(shape))
-similar(f, dims::DimOrInd...) = similar(f, dims)
+similar(f, shape::Tuple) = f(to_shape(shape))    # doesn't share well with Associative
+similar(f, dims::DimOrInd...) = similar(f, dims) # doesn't share well with Associative
 
 ## from general iterable to any array
 
