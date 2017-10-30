@@ -147,9 +147,13 @@ Custom `Associative` subtypes may choose which specific associative type is best
 return for the given value type and indices, by specializing on the three-argument
 signature. The default is to return a `Dict`.
 """
-similar(a::Associative) = similar(a, valtype(a), keys(a))
+# v1.0: similar(a::Associative) = similar(a, valtype(a), keys(a))
 similar(a::Associative, ::Type{T}) where {T} = similar(a, T, keys(a))
 similar(a::Associative, inds) = similar(a, valtype(a), inds)
+
+# disambiguation
+similar(a::Associative, t::Tuple) = similar(a, eltype(a), t)
+similar(a::Associative, d::DimOrInd) = similar(a, eltype(a), d)
 
 """
     empty(a::Associative, [index_type=keytype(a)], [value_type=valtype(a)])

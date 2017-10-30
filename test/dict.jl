@@ -433,11 +433,11 @@ end
 @testset "similar" begin
     d = Dict(:a=>2, :b=>3)
 
-    d2 = similar(d)
-    @test d2 isa typeof(d)
-    @test length(keys(d2)) == 2
-    @test :a ∈ keys(d2)
-    @test :b ∈ keys(d2)
+    # v1.0: d2 = similar(d)
+    # v1.0: @test d2 isa typeof(d)
+    # v1.0: @test length(keys(d2)) == 2
+    # v1.0: @test :a ∈ keys(d2)
+    # v1.0: @test :b ∈ keys(d2)
 
     d3 = similar(d, Float64)
     @test d3 isa Dict{Symbol, Float64}
